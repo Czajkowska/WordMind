@@ -8,10 +8,10 @@ class Logic:
         self.who = Color.RED
         self.board = Board()
 
-        self.playersList = []
+        self.players_list = []
 
         for color in range(self.board.how_many_colors+1):
-            self.playersList.append(Group(Color(color)))
+            self.players_list.append(Group(Color(color)))
 
         # Wswietlanie menu
     def menu(self):
@@ -27,12 +27,12 @@ class Logic:
         # Pokazuje szefowi klucz i pozwala mu podac wskazowke
     def boss_action(self, color):
         self.board.show_key()
-        self.playersList[color.value].boss.action()
+        self.players_list[color.value].boss.action()
 
         # Pokazuje drozynie plansze i pozwala im wybrac pole
     def team_action(self, color):
         self.board.show_board()
-        self.playersList[color.value].team.action()
+        self.players_list[color.value].team.action()
 
         # Zmienia grupe na inny kolor
     def switch_color(self):
@@ -40,7 +40,7 @@ class Logic:
 
         # Wyswietla kto wygral
     def winner(self):
-        print("! ! ! Color ", self.board.actualColor.name, " wins ! ! !")
+        print("! ! ! Color ", self.board.actual_color.name, " wins ! ! !")
 
         # Przed wyjsciem z gry
     def end_state(self):

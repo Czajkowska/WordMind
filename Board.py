@@ -8,12 +8,12 @@ class Board:
         self.size = size
         self.how_many_colors = how_many_colors - 1
 
-        self.actualColor = Color(random.randint(0, self.how_many_colors))
+        self.actual_color = Color(random.randint(0, self.how_many_colors))
 
-        self.actualBoard = []
+        self.actual_board = []
 
         for row in range(self.size[0]):
-            self.actualBoard.append([])
+            self.actual_board.append([])
 
         self.key = []
 
@@ -51,7 +51,7 @@ class Board:
 
         for row in range(self.size[0]):
             for column in range(self.size[1]):
-                self.actualBoard[row].append(Field(words[position]))
+                self.actual_board[row].append(Field(words[position]))
 
                 self.key[row].append(Field(words[position]))
 
@@ -69,7 +69,7 @@ class Board:
                         break
 
             if what_to_paint == "key":
-                self.key[row][column].changeColor(new_color)
+                self.key[row][column].change_color(new_color)
 
             how_many_words -= 1
 
@@ -78,7 +78,7 @@ class Board:
         how_many_colors = self.how_many_colors
 
         while how_many_colors >= 0:
-            if self.actualColor == Color(how_many_colors):
+            if self.actual_color == Color(how_many_colors):
                 self.painting(Color(how_many_colors), how_many_color_words + 1, "key")
             else:
                 self.painting(Color(how_many_colors), how_many_color_words, "key")
@@ -109,7 +109,7 @@ class Board:
     def show_board(self):
         print("Board:")
 
-        self.pretty_print(self.actualBoard)
+        self.pretty_print(self.actual_board)
 
         print()
 
@@ -123,11 +123,11 @@ class Board:
 
         # Odkrywa pole na planszy
     def update_board(self, position):
-        self.actualBoard[position[0]][position[1]] = self.key[position[0]][position[1]]
+        self.actual_board[position[0]][position[1]] = self.key[position[0]][position[1]]
 
         # Zmienia graczy na nastepny kolor
     def switch_color(self):
-        if self.actualColor == Color(self.how_many_colors):
-            self.actualColor = Color.RED
+        if self.actual_color == Color(self.how_many_colors):
+            self.actual_color = Color.RED
         else:
-            self.actualColor = Color(self.actualColor.value + 1)
+            self.actual_color = Color(self.actual_color.value + 1)
